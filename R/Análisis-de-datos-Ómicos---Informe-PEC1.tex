@@ -1,0 +1,681 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Análisis de Datos Ómicos - Informe PEC1},
+  pdfauthor={Paola Ferrero},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Análisis de Datos Ómicos - Informe PEC1}
+\author{Paola Ferrero}
+\date{2024-11-06}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 1.Cargamos los datos y metadatos}
+
+\CommentTok{\# Metadatos de las características (features)}
+\CommentTok{\# Si exploramos el archivo csv vemos que hay 46 columnas, la última de ellas no tiene encabezado, puesto que en la descripción se explica que deberían ser 45 importaremos solo las 45 primeras}
+\NormalTok{metadata\_features }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv2}\NormalTok{(}\StringTok{"C:/Users/pferr/Ferrero{-}Capilla{-}Paola{-}PEC1/datos descargados/features.csv"}\NormalTok{,}\AttributeTok{col\_names =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i Using "','" as decimal and "'.'" as grouping mark. Use `read_delim()` for more control.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: One or more parsing issues, call `problems()` on your data frame for details,
+## e.g.:
+##   dat <- vroom(...)
+##   problems(dat)
+\end{verbatim}
+
+\begin{verbatim}
+## Rows: 1541 Columns: 45
+\end{verbatim}
+
+\begin{verbatim}
+## -- Column specification --------------------------------------------------------
+## Delimiter: ";"
+## chr (27): b1, b10, b11, b15, b16, b4, b7, b8, a1, a10, a11, a13, a14, a15, a...
+## num (18): b12, b13, b14, b17, b2, b6, b9, a12, a16, a17, a4, a8, c1, c12, c1...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cargamos el csv de manera alternativa}
+\NormalTok{metadata\_features1 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv2}\NormalTok{(}\StringTok{"C:/Users/pferr/Ferrero{-}Capilla{-}Paola{-}PEC1/datos descargados/features.csv"}\NormalTok{, }\AttributeTok{header =}\NormalTok{ F, }\AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{quote =} \StringTok{"}\SpecialCharTok{\textbackslash{}"}\StringTok{"}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\# Como la última columna no tiene encabezado (ID) hay que eliminarla, también la primera fila porque importamos el csv sin que la tenga en cuenta como tal}
+\NormalTok{metadata\_features1 }\OtherTok{\textless{}{-}}\NormalTok{ metadata\_features1[ }\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{46}\NormalTok{]}
+\CommentTok{\# Asignamos nombre a las columnas}
+\FunctionTok{colnames}\NormalTok{(metadata\_features1) }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(metadata\_features)}
+\CommentTok{\# Comprobamos que se ha cargado correctamente mostrando las primeras filas}
+\FunctionTok{head}\NormalTok{(metadata\_features1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         b1      b10      b11      b12      b13      b14      b15      b16
+## 2   443489   941000   757000   612000   858000   185000   671000  1140000
+## 3   107754  8300000  6790000 20800000   320000  1290000  1580000  2340000
+## 4  9543071     1500      890 16200000     1250      968      657      809
+## 5 11011465   276000    35700   631000   369000   242000   472000  5320000
+## 6  5281160   706000   121000 11600000   164000   424000   749000   267000
+## 7   440341     6340    34100    31900     9440    92600     6740    14400
+##        b17       b2       b4       b6       b7       b8       b9       a1
+## 2   108000   383000   593000  7240000   494000   812000  1290000    66000
+## 3  1180000  1260000 15000000   495000    58100  1350000  1860000   698000
+## 4      767      826     2810     1140     1010      635     1280      664
+## 5    18000   243000   131000   158000   208000   228000   119000    58000
+## 6  3050000    99100   136000   452000    75600   132000   341000   119000
+## 7     8180     8980     4610    10100     8180     5920     1950     1810
+##        a10      a11      a12      a13      a14      a15      a16      a17
+## 2   215000   310000   798000  1070000   228000   241000  1180000    15100
+## 3  1220000  6920000 18700000  1320000  1230000  1980000  6980000   716000
+## 4      644     1060     1500        0      818      660      754      695
+## 5    17700   394000  4230000  3740000   361000    63300  2090000    37400
+## 6    51600    54900 26700000   323000   152000   208000  1400000    76100
+## 7     4350     1450        0    56200     3700     8360     2590     1390
+##         a2       a4       a6       a7       a8       a9       c1      c10
+## 2   255000   411000   463000   242000  1010000   702000    44600   136000
+## 3   761000  2910000 11300000   689000  1350000  1130000   479000   652000
+## 4      562      851      766      637      846        0      618      546
+## 5    13400   260000   347000   151000  1080000     5080     2140   266000
+## 6    16500   374000   491000    81200  1000000  7000000    22400  1500000
+## 7     1090    30400     2340     2930     7060     2830        0        0
+##        c11      c12      c13      c14      c15      c16      c17       c2
+## 2  1060000  1050000   464000  1460000   636000  4510000   146000   400000
+## 3  2200000  7380000   187000  1430000  9730000 11200000  6660000  1830000
+## 4      926   800000        0        0      809     1380      982      625
+## 5   627000  3140000   127000   197000   286000   545000    35800    23200
+## 6   171000   331000   198000   110000   178000   791000    44100    57100
+## 7     4460        0     3190    22900 49200000        0     6930     1730
+##         c4       c6       c7       c8       c9
+## 2   783000   213000   816000   587000   319000
+## 3 15100000   971000   574000  4590000  9730000
+## 4     1790      626      991     1600      949
+## 5   230000    59600    48100    44000   576000
+## 6   150000    29500   126000   646000   291000
+## 7     2400     3450     2880     2450    11200
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Comprobamos que las dimensiones son correctas}
+\FunctionTok{dim}\NormalTok{(metadata\_features1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1541   45
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Comprobamos la clase de las columnas}
+\FunctionTok{str}\NormalTok{(metadata\_features1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    1541 obs. of  45 variables:
+##  $ b1 : chr  "443489" "107754" "9543071" "11011465" ...
+##  $ b10: chr  " 941000" " 8300000" "    1500" " 276000" ...
+##  $ b11: chr  " 757000" " 6790000" "     890" "  35700" ...
+##  $ b12: chr  " 612000" "20800000" "16200000" " 631000" ...
+##  $ b13: chr  " 858000" "  320000" "    1250" " 369000" ...
+##  $ b14: chr  " 185000" " 1290000" "     968" " 242000" ...
+##  $ b15: chr  " 671000" " 1580000" "     657" " 472000" ...
+##  $ b16: chr  "1140000" " 2340000" "     809" "5320000" ...
+##  $ b17: chr  " 108000" " 1180000" "     767" "  18000" ...
+##  $ b2 : chr  " 383000" " 1260000" "     826" " 243000" ...
+##  $ b4 : chr  " 593000" "15000000" "    2810" " 131000" ...
+##  $ b6 : chr  "7240000" "  495000" "    1140" " 158000" ...
+##  $ b7 : chr  " 494000" "   58100" "    1010" " 208000" ...
+##  $ b8 : chr  " 812000" " 1350000" "     635" " 228000" ...
+##  $ b9 : chr  "1290000" " 1860000" "    1280" " 119000" ...
+##  $ a1 : chr  "  66000" "  698000" "     664" "  58000" ...
+##  $ a10: chr  " 215000" " 1220000" "     644" "  17700" ...
+##  $ a11: chr  " 310000" " 6920000" "    1060" " 394000" ...
+##  $ a12: chr  " 798000" "18700000" "    1500" "4230000" ...
+##  $ a13: chr  "1070000" " 1320000" "       0" "3740000" ...
+##  $ a14: chr  " 228000" " 1230000" "     818" " 361000" ...
+##  $ a15: chr  " 241000" " 1980000" "     660" "  63300" ...
+##  $ a16: chr  "1180000" " 6980000" "     754" "2090000" ...
+##  $ a17: chr  "  15100" "  716000" "     695" "  37400" ...
+##  $ a2 : chr  " 255000" "  761000" "     562" "  13400" ...
+##  $ a4 : chr  " 411000" " 2910000" "     851" " 260000" ...
+##  $ a6 : chr  " 463000" "11300000" "     766" " 347000" ...
+##  $ a7 : chr  " 242000" "  689000" "     637" " 151000" ...
+##  $ a8 : chr  "1010000" " 1350000" "     846" "1080000" ...
+##  $ a9 : chr  " 702000" " 1130000" "       0" "   5080" ...
+##  $ c1 : chr  "  44600" "  479000" "     618" "   2140" ...
+##  $ c10: chr  " 136000" "  652000" "     546" " 266000" ...
+##  $ c11: chr  "1060000" " 2200000" "     926" " 627000" ...
+##  $ c12: chr  "1050000" " 7380000" "  800000" "3140000" ...
+##  $ c13: chr  " 464000" "  187000" "       0" " 127000" ...
+##  $ c14: chr  "1460000" " 1430000" "       0" " 197000" ...
+##  $ c15: chr  " 636000" " 9730000" "     809" " 286000" ...
+##  $ c16: chr  "4510000" "11200000" "    1380" " 545000" ...
+##  $ c17: chr  " 146000" " 6660000" "     982" "  35800" ...
+##  $ c2 : chr  " 400000" " 1830000" "     625" "  23200" ...
+##  $ c4 : chr  " 783000" "15100000" "    1790" " 230000" ...
+##  $ c6 : chr  " 213000" "  971000" "     626" "  59600" ...
+##  $ c7 : chr  " 816000" "  574000" "     991" "  48100" ...
+##  $ c8 : chr  " 587000" " 4590000" "    1600" "  44000" ...
+##  $ c9 : chr  " 319000" " 9730000" "     949" " 576000" ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Puesto que las interpreta como strings en lugar de como numeric, convertimos los valores }
+\CommentTok{\# Aplicamos la conversión a todas las columnas}
+\NormalTok{metadata\_features1 }\OtherTok{\textless{}{-}}\NormalTok{ metadata\_features1 }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate\_if}\NormalTok{(is.character, as.numeric)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: There was 1 warning in `mutate()`.
+## i In argument: `b1 = .Primitive("as.double")(b1)`.
+## Caused by warning:
+## ! NAs introducidos por coerción
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Comprobamos el resultado}
+\FunctionTok{str}\NormalTok{(metadata\_features1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    1541 obs. of  45 variables:
+##  $ b1 : num  443489 107754 9543071 11011465 5281160 ...
+##  $ b10: num  941000 8300000 1500 276000 706000 6340 33900000 8870 1870000 2360000 ...
+##  $ b11: num  757000 6790000 890 35700 121000 34100 16000000 149000 1520000 6560000 ...
+##  $ b12: num  612000 20800000 16200000 631000 11600000 31900 51200000 23900 2470000 1170000 ...
+##  $ b13: num  858000 320000 1250 369000 164000 9440 21900000 28000 3090000 462000 ...
+##  $ b14: num  185000 1290000 968 242000 424000 92600 10700000 8690 1380000 562000 ...
+##  $ b15: num  671000 1580000 657 472000 749000 6740 18800000 8140 4060000 144000 ...
+##  $ b16: num  1140000 2340000 809 5320000 267000 14400 20400000 6670000 991000 1320000 ...
+##  $ b17: num  108000 1180000 767 18000 3050000 8180 106000 216000 1340000 365000 ...
+##  $ b2 : num  383000 1260000 826 243000 99100 8980 2620000 4120 801000 605000 ...
+##  $ b4 : num  593000 15000000 2810 131000 136000 4610 41100000 2080 2490000 495000 ...
+##  $ b6 : num  7240000 495000 1140 158000 452000 10100 23100000 725000 1380000 1150000 ...
+##  $ b7 : num  494000 58100 1010 208000 75600 8180 5890000 51300 289000 161000 ...
+##  $ b8 : num  812000 1350000 635 228000 132000 5920 12600000 2250 442000 603000 ...
+##  $ b9 : num  1290000 1860000 1280 119000 341000 1950 26100000 109000 3210000 18900000 ...
+##  $ a1 : num  66000 698000 664 58000 119000 1810 15900000 2320 210000 115000 ...
+##  $ a10: num  215000 1220000 644 17700 51600 4350 15300000 8440 1950000 323000 ...
+##  $ a11: num  310000 6920000 1060 394000 54900 1450 19800000 71700 840000 252000 ...
+##  $ a12: num  798000 18700000 1500 4230000 26700000 0 23400000 71400 4780000 268000 ...
+##  $ a13: num  1070000 1320000 0 3740000 323000 56200 41800000 173000 3170000 462000 ...
+##  $ a14: num  228000 1230000 818 361000 152000 3700 20000000 2910 1430000 362000 ...
+##  $ a15: num  241000 1980000 660 63300 208000 8360 3580000 7280 1480000 67300 ...
+##  $ a16: num  1180000 6980000 754 2090000 1400000 2590 6280000 162000 3090000 515000 ...
+##  $ a17: num  15100 716000 695 37400 76100 1390 254000 23300 58600 66200 ...
+##  $ a2 : num  255000 761000 562 13400 16500 1090 4550000 828 603000 59100 ...
+##  $ a4 : num  411000 2910000 851 260000 374000 30400 29200000 17800 7170000 1190000 ...
+##  $ a6 : num  463000 11300000 766 347000 491000 2340 23300000 1250000 260000 11100000 ...
+##  $ a7 : num  242000 689000 637 151000 81200 2930 1510000 44600 94900 173000 ...
+##  $ a8 : num  1010000 1350000 846 1080000 1000000 7060 19300000 8910 1130000 287000 ...
+##  $ a9 : num  702000 1130000 0 5080 7000000 2830 30800000 52100 1200000 713000 ...
+##  $ c1 : num  44600 479000 618 2140 22400 0 18900000 14200 11300000 836000 ...
+##  $ c10: num  136000 652000 546 266000 1500000 0 7810000 27200 1540000 335000 ...
+##  $ c11: num  1060000 2200000 926 627000 171000 4460 18500000 6690 2090000 537000 ...
+##  $ c12: num  1050000 7380000 800000 3140000 331000 0 32400000 247000 1530000 609000 ...
+##  $ c13: num  464000 187000 0 127000 198000 3190 23500000 7050 1610000 385000 ...
+##  $ c14: num  1460000 1430000 0 197000 110000 22900 7650000 1920 1980000 356000 ...
+##  $ c15: num  636000 9730000 809 286000 178000 49200000 19500000 639000 25500000 195000 ...
+##  $ c16: num  4510000 11200000 1380 545000 791000 0 41100000 109000 3660000 6100000 ...
+##  $ c17: num  146000 6660000 982 35800 44100 6930 128000 32500 1810000 37600000 ...
+##  $ c2 : num  400000 1830000 625 23200 57100 1730 3610000 9540 238000 126000 ...
+##  $ c4 : num  783000 15100000 1790 230000 150000 2400 13100000 15200 4660000 547000 ...
+##  $ c6 : num  213000 971000 626 59600 29500 3450 16900000 6430 254000 1140000 ...
+##  $ c7 : num  816000 574000 991 48100 126000 2880 36700000 33500 3860000 334000 ...
+##  $ c8 : num  587000 4590000 1600 44000 646000 2450 2910000 5510 517000 78700 ...
+##  $ c9 : num  319000 9730000 949 576000 291000 11200 18300000 11400 1680000 609000 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Metadatos de las muestras (metadata)}
+\NormalTok{metadata\_samples }\OtherTok{\textless{}{-}} \FunctionTok{read.csv2}\NormalTok{(}\StringTok{"C:/Users/pferr/Ferrero{-}Capilla{-}Paola{-}PEC1/datos descargados/metadata.csv"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{quote =} \StringTok{"}\SpecialCharTok{\textbackslash{}"}\StringTok{"}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\# Comprobamos que se ha cargado correctamente mostrando las primeras filas}
+\FunctionTok{head}\NormalTok{(metadata\_samples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    ID Treatment
+## 1  b1  Baseline
+## 2 b10  Baseline
+## 3 b11  Baseline
+## 4 b12  Baseline
+## 5 b13  Baseline
+## 6 b14  Baseline
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Comprobamos que las dimensiones son correctas}
+\FunctionTok{dim}\NormalTok{(metadata\_samples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 45  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Datos de los metabolitos (metaboliteNames)}
+\NormalTok{metabolite\_names }\OtherTok{\textless{}{-}} \FunctionTok{read.csv2}\NormalTok{(}\StringTok{"C:/Users/pferr/Ferrero{-}Capilla{-}Paola{-}PEC1/datos descargados/metaboliteNames.csv"}\NormalTok{,}\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sep =} \StringTok{";"}\NormalTok{, }\AttributeTok{quote =} \StringTok{"}\SpecialCharTok{\textbackslash{}"}\StringTok{"}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\# Comprobamos que se ha cargado correctamente mostrando las primeras filas}
+\FunctionTok{head}\NormalTok{(metabolite\_names)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                                           names  PubChem   KEGG
+## 1                    10-Desacetyltaxuyunnanin C  5460449 C15538
+## 2                       10-Hydroxydecanoic acid    74300 C02774
+## 3                             10-Oxodecanoate_1 19734156 C02217
+## 4 11beta,21-Dihydroxy-5beta-pregnane-3,20-dione 21145110 C05475
+## 5                  1,1-Dichloroethylene epoxide   119521 C14857
+## 6                       11-Hydroxycanthin-6-one   337601 C09212
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Comprobamos que las dimensiones son correctas}
+\FunctionTok{dim}\NormalTok{(metabolite\_names)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1541    3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 2.Creamos el objeto SummarizedExperiment}
+
+\CommentTok{\# Paso previo, las filas de colData tienen que tener el mismo nombre que las columnas del assay}
+\FunctionTok{rownames}\NormalTok{(metadata\_samples) }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(metadata\_features1)}
+\CommentTok{\# Las filas de assays tienen que tener el mismo nombre que las de rowData}
+\FunctionTok{rownames}\NormalTok{(metadata\_features1) }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(metabolite\_names)}
+
+\CommentTok{\# Creamos el contenedor}
+\NormalTok{se }\OtherTok{\textless{}{-}} \FunctionTok{SummarizedExperiment}\NormalTok{(}
+  \AttributeTok{assays =} \FunctionTok{list}\NormalTok{(}\AttributeTok{metabolites =} \FunctionTok{as.matrix}\NormalTok{(metadata\_features1)), }\CommentTok{\# Los datos cuantitativos ómicos corresponden al slot de assays}
+  \AttributeTok{colData =}\NormalTok{ metadata\_samples, }\CommentTok{\# La información de las muestras (covariables), cada fila corresponde a una columna de los datos de expresión}
+  \AttributeTok{rowData =}\NormalTok{ metabolite\_names }\CommentTok{\# La información sobre los nombres de los metabolitos e ID de PubChem y KEGG}
+\NormalTok{)}
+
+\CommentTok{\# Añadimos información del experimento}
+\FunctionTok{metadata}\NormalTok{(se)}\SpecialCharTok{$}\NormalTok{description }\OtherTok{\textless{}{-}} \StringTok{"ST000291: LC{-}MS Based Approaches to Investigate Metabolomic Differences in the Urine of Young Women after Drinking Cranberry Juice or Apple Juice"} 
+\FunctionTok{metadata}\NormalTok{(se)}\SpecialCharTok{$}\NormalTok{source }\OtherTok{\textless{}{-}} \StringTok{"https://github.com/nutrimetabolomics/metaboData/tree/main/Datasets/2024{-}fobitools{-}UseCase\_1, This is data downlaoded from the metabolomics Workbench repository where it is stored with ID: ST000291"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 3.Mostramos el contenedor}
+\NormalTok{se}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## class: SummarizedExperiment 
+## dim: 1541 45 
+## metadata(2): description source
+## assays(1): metabolites
+## rownames(1541): 1 2 ... 1540 1541
+## rowData names(3): names PubChem KEGG
+## colnames(45): b1 b10 ... c8 c9
+## colData names(2): ID Treatment
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Exploramos el objeto }
+\CommentTok{\# Dimensiones del dataset}
+\FunctionTok{dim}\NormalTok{(se)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1541   45
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Resumen}
+\FunctionTok{summary}\NormalTok{(}\FunctionTok{assay}\NormalTok{(se))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        b1                b10                 b11                 b12           
+##  Min.   :      16   Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:   10664   1st Qu.:1.235e+05   1st Qu.:8.145e+04   1st Qu.:2.240e+05  
+##  Median :  151126   Median :9.100e+05   Median :7.200e+05   Median :1.450e+06  
+##  Mean   : 4611998   Mean   :3.245e+07   Mean   :2.800e+07   Mean   :4.107e+07  
+##  3rd Qu.: 4772624   3rd Qu.:4.980e+06   3rd Qu.:4.500e+06   3rd Qu.:8.050e+06  
+##  Max.   :92042784   Max.   :1.920e+10   Max.   :1.550e+10   Max.   :2.070e+10  
+##  NA's   :1          NA's   :182         NA's   :182         NA's   :182        
+##       b13                 b14                 b15           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:1.390e+05   1st Qu.:5.810e+04   1st Qu.:4.435e+04  
+##  Median :1.010e+06   Median :5.380e+05   Median :4.890e+05  
+##  Mean   :3.606e+07   Mean   :2.452e+07   Mean   :2.227e+07  
+##  3rd Qu.:5.545e+06   3rd Qu.:3.095e+06   3rd Qu.:2.925e+06  
+##  Max.   :2.300e+10   Max.   :1.130e+10   Max.   :1.240e+10  
+##  NA's   :182         NA's   :182         NA's   :182        
+##       b16                 b17                  b2           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:1.070e+05   1st Qu.:2.560e+04   1st Qu.:2.635e+04  
+##  Median :8.560e+05   Median :2.940e+05   Median :2.910e+05  
+##  Mean   :3.086e+07   Mean   :1.551e+07   Mean   :1.270e+07  
+##  3rd Qu.:4.920e+06   3rd Qu.:1.940e+06   3rd Qu.:1.675e+06  
+##  Max.   :1.650e+10   Max.   :7.320e+09   Max.   :6.810e+09  
+##  NA's   :182         NA's   :182         NA's   :182        
+##        b4                  b6                  b7           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:1.565e+05   1st Qu.:1.620e+05   1st Qu.:3.615e+04  
+##  Median :9.160e+05   Median :1.250e+06   Median :3.740e+05  
+##  Mean   :3.124e+07   Mean   :4.695e+07   Mean   :2.116e+07  
+##  3rd Qu.:5.070e+06   3rd Qu.:7.130e+06   3rd Qu.:2.830e+06  
+##  Max.   :1.700e+10   Max.   :2.610e+10   Max.   :1.270e+10  
+##  NA's   :182         NA's   :182         NA's   :182        
+##        b8                  b9                  a1           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:4.225e+04   1st Qu.:1.435e+05   1st Qu.:1.520e+04  
+##  Median :4.540e+05   Median :1.070e+06   Median :2.090e+05  
+##  Mean   :1.688e+07   Mean   :2.841e+07   Mean   :1.288e+07  
+##  3rd Qu.:2.710e+06   3rd Qu.:5.615e+06   3rd Qu.:1.475e+06  
+##  Max.   :7.870e+09   Max.   :1.430e+10   Max.   :6.970e+09  
+##  NA's   :182         NA's   :182         NA's   :182        
+##       a10                 a11                 a12           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:3.375e+04   1st Qu.:3.025e+04   1st Qu.:1.480e+05  
+##  Median :3.000e+05   Median :2.860e+05   Median :1.180e+06  
+##  Mean   :1.371e+07   Mean   :2.108e+07   Mean   :3.527e+07  
+##  3rd Qu.:2.005e+06   3rd Qu.:2.475e+06   3rd Qu.:5.895e+06  
+##  Max.   :6.050e+09   Max.   :1.210e+10   Max.   :2.190e+10  
+##  NA's   :182         NA's   :182         NA's   :182        
+##       a13                 a14                 a15           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:1.430e+05   1st Qu.:5.950e+04   1st Qu.:9.860e+03  
+##  Median :1.030e+06   Median :5.350e+05   Median :1.640e+05  
+##  Mean   :4.372e+07   Mean   :2.336e+07   Mean   :1.336e+07  
+##  3rd Qu.:7.840e+06   3rd Qu.:3.155e+06   3rd Qu.:1.400e+06  
+##  Max.   :2.780e+10   Max.   :1.230e+10   Max.   :6.570e+09  
+##  NA's   :182         NA's   :182         NA's   :182        
+##       a16                 a17                  a2           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:7.320e+04   1st Qu.:2.300e+04   1st Qu.:1.085e+04  
+##  Median :5.380e+05   Median :2.790e+05   Median :1.520e+05  
+##  Mean   :2.305e+07   Mean   :1.758e+07   Mean   :1.145e+07  
+##  3rd Qu.:3.230e+06   3rd Qu.:2.150e+06   3rd Qu.:1.475e+06  
+##  Max.   :1.430e+10   Max.   :9.770e+09   Max.   :5.330e+09  
+##  NA's   :182         NA's   :182         NA's   :182        
+##        a4                  a6                  a7           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:1.670e+05   1st Qu.:9.705e+04   1st Qu.:1.870e+04  
+##  Median :1.150e+06   Median :7.080e+05   Median :2.420e+05  
+##  Mean   :3.704e+07   Mean   :2.767e+07   Mean   :1.619e+07  
+##  3rd Qu.:6.380e+06   3rd Qu.:4.140e+06   3rd Qu.:2.215e+06  
+##  Max.   :2.090e+10   Max.   :1.530e+10   Max.   :8.930e+09  
+##  NA's   :182         NA's   :182         NA's   :182        
+##        a8                  a9                  c1           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:7.105e+04   1st Qu.:1.005e+05   1st Qu.:1.135e+04  
+##  Median :6.410e+05   Median :8.590e+05   Median :1.740e+05  
+##  Mean   :2.039e+07   Mean   :3.144e+07   Mean   :1.317e+07  
+##  3rd Qu.:3.355e+06   3rd Qu.:4.900e+06   3rd Qu.:1.470e+06  
+##  Max.   :9.710e+09   Max.   :1.640e+10   Max.   :5.900e+09  
+##  NA's   :182         NA's   :182         NA's   :182        
+##       c10                 c11                 c12           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:4.840e+04   1st Qu.:6.490e+04   1st Qu.:1.305e+05  
+##  Median :4.920e+05   Median :5.980e+05   Median :1.050e+06  
+##  Mean   :2.021e+07   Mean   :2.269e+07   Mean   :4.042e+07  
+##  3rd Qu.:2.680e+06   3rd Qu.:3.880e+06   3rd Qu.:6.120e+06  
+##  Max.   :1.050e+10   Max.   :1.240e+10   Max.   :2.040e+10  
+##  NA's   :182         NA's   :182         NA's   :182        
+##       c13                 c14                 c15           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:1.625e+05   1st Qu.:6.530e+04   1st Qu.:8.165e+04  
+##  Median :1.120e+06   Median :5.770e+05   Median :7.260e+05  
+##  Mean   :5.147e+07   Mean   :2.468e+07   Mean   :2.447e+07  
+##  3rd Qu.:7.135e+06   3rd Qu.:3.415e+06   3rd Qu.:3.810e+06  
+##  Max.   :2.380e+10   Max.   :1.120e+10   Max.   :9.930e+09  
+##  NA's   :182         NA's   :182         NA's   :182        
+##       c16                 c17                  c2           
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00  
+##  1st Qu.:1.150e+05   1st Qu.:4.185e+04   1st Qu.:2.320e+04  
+##  Median :9.290e+05   Median :4.350e+05   Median :2.700e+05  
+##  Mean   :4.430e+07   Mean   :2.168e+07   Mean   :1.682e+07  
+##  3rd Qu.:6.195e+06   3rd Qu.:2.655e+06   3rd Qu.:2.055e+06  
+##  Max.   :2.140e+10   Max.   :7.550e+09   Max.   :5.920e+09  
+##  NA's   :182         NA's   :182         NA's   :182        
+##        c4                  c6                  c7                  c8          
+##  Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.000e+00   Min.   :0.00e+00  
+##  1st Qu.:1.095e+05   1st Qu.:4.110e+04   1st Qu.:1.180e+05   1st Qu.:2.31e+04  
+##  Median :8.590e+05   Median :5.200e+05   Median :8.790e+05   Median :3.06e+05  
+##  Mean   :4.522e+07   Mean   :1.774e+07   Mean   :3.881e+07   Mean   :2.12e+07  
+##  3rd Qu.:5.310e+06   3rd Qu.:2.865e+06   3rd Qu.:5.245e+06   3rd Qu.:2.35e+06  
+##  Max.   :2.110e+10   Max.   :1.060e+10   Max.   :1.710e+10   Max.   :9.75e+09  
+##  NA's   :182         NA's   :182         NA's   :182         NA's   :182       
+##        c9           
+##  Min.   :0.000e+00  
+##  1st Qu.:8.745e+04  
+##  Median :7.260e+05  
+##  Mean   :2.937e+07  
+##  3rd Qu.:4.345e+06  
+##  Max.   :1.480e+10  
+##  NA's   :182
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Primeros registros}
+\FunctionTok{head}\NormalTok{(}\FunctionTok{assay}\NormalTok{(se))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         b1     b10     b11      b12    b13     b14     b15     b16     b17
+## 1   443489  941000  757000   612000 858000  185000  671000 1140000  108000
+## 2   107754 8300000 6790000 20800000 320000 1290000 1580000 2340000 1180000
+## 3  9543071    1500     890 16200000   1250     968     657     809     767
+## 4 11011465  276000   35700   631000 369000  242000  472000 5320000   18000
+## 5  5281160  706000  121000 11600000 164000  424000  749000  267000 3050000
+## 6   440341    6340   34100    31900   9440   92600    6740   14400    8180
+##        b2       b4      b6     b7      b8      b9     a1     a10     a11
+## 1  383000   593000 7240000 494000  812000 1290000  66000  215000  310000
+## 2 1260000 15000000  495000  58100 1350000 1860000 698000 1220000 6920000
+## 3     826     2810    1140   1010     635    1280    664     644    1060
+## 4  243000   131000  158000 208000  228000  119000  58000   17700  394000
+## 5   99100   136000  452000  75600  132000  341000 119000   51600   54900
+## 6    8980     4610   10100   8180    5920    1950   1810    4350    1450
+##        a12     a13     a14     a15     a16    a17     a2      a4       a6
+## 1   798000 1070000  228000  241000 1180000  15100 255000  411000   463000
+## 2 18700000 1320000 1230000 1980000 6980000 716000 761000 2910000 11300000
+## 3     1500       0     818     660     754    695    562     851      766
+## 4  4230000 3740000  361000   63300 2090000  37400  13400  260000   347000
+## 5 26700000  323000  152000  208000 1400000  76100  16500  374000   491000
+## 6        0   56200    3700    8360    2590   1390   1090   30400     2340
+##       a7      a8      a9     c1     c10     c11     c12    c13     c14      c15
+## 1 242000 1010000  702000  44600  136000 1060000 1050000 464000 1460000   636000
+## 2 689000 1350000 1130000 479000  652000 2200000 7380000 187000 1430000  9730000
+## 3    637     846       0    618     546     926  800000      0       0      809
+## 4 151000 1080000    5080   2140  266000  627000 3140000 127000  197000   286000
+## 5  81200 1000000 7000000  22400 1500000  171000  331000 198000  110000   178000
+## 6   2930    7060    2830      0       0    4460       0   3190   22900 49200000
+##        c16     c17      c2       c4     c6     c7      c8      c9
+## 1  4510000  146000  400000   783000 213000 816000  587000  319000
+## 2 11200000 6660000 1830000 15100000 971000 574000 4590000 9730000
+## 3     1380     982     625     1790    626    991    1600     949
+## 4   545000   35800   23200   230000  59600  48100   44000  576000
+## 5   791000   44100   57100   150000  29500 126000  646000  291000
+## 6        0    6930    1730     2400   3450   2880    2450   11200
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Información sobre las muestras}
+\FunctionTok{colData}\NormalTok{(se)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## DataFrame with 45 rows and 2 columns
+##              ID   Treatment
+##     <character> <character>
+## b1           b1    Baseline
+## b10         b10    Baseline
+## b11         b11    Baseline
+## b12         b12    Baseline
+## b13         b13    Baseline
+## ...         ...         ...
+## c4           c4   Cranberry
+## c6           c6   Cranberry
+## c7           c7   Cranberry
+## c8           c8   Cranberry
+## c9           c9   Cranberry
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Metadatos del experimento}
+\FunctionTok{metadata}\NormalTok{(se)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $description
+## [1] "ST000291: LC-MS Based Approaches to Investigate Metabolomic Differences in the Urine of Young Women after Drinking Cranberry Juice or Apple Juice"
+## 
+## $source
+## [1] "https://github.com/nutrimetabolomics/metaboData/tree/main/Datasets/2024-fobitools-UseCase_1, This is data downlaoded from the metabolomics Workbench repository where it is stored with ID: ST000291"
+\end{verbatim}
+
+Enlace al repositorio:
+\url{https://github.com/pferrecap/Ferrero-Capilla-Paola-PEC1.git}
+
+\end{document}
